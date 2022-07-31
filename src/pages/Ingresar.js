@@ -1,12 +1,19 @@
-import React from 'react'
+import React , {useState , useEffect} from 'react'
 import { Button, Form, Input , InputNumber , Typography , Divider} from 'antd';
 import { SaveOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { useHideMenu } from '../hooks/useHideMenu';
 
+import {getUsuarioStorage} from '../helpers/getUsusarioStorage';
+
 const Ingresar = () => {
   useHideMenu(false);
-  const onFinish = (values) => {
+
+  const onFinish = ({agente , escritorio}) => {
+    
+    localStorage.setItem('agente',agente);
+    localStorage.setItem('escritorio',escritorio)
+
     history('/escritorio');
   };
 
@@ -17,6 +24,19 @@ const Ingresar = () => {
   const {Title , Text} = Typography;
 
   const history = useNavigate ();
+
+  const [usuario] = useState(getUsuarioStorage)
+
+  useEffect(() => {
+   
+  
+  if(usuario.agente && usuario.escritorio) {
+
+    history('/escritorio');
+  }
+  
+  }, [])
+  
 
   return (
     <>
