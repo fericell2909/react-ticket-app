@@ -1,22 +1,19 @@
-import React , {Redirect} from 'react'
+import React , { useContext} from 'react'
 import {BrowserRouter,
     Routes,
     Route,
     Link} from 'react-router-dom'
 import {
-    MenuFoldOutlined,
-    MenuUnfoldOutlined,
     UploadOutlined,
     UserOutlined,
-    VideoCameraOutlined,
 } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import Ingresar from './Ingresar';
 import Cola from './Cola';
 import CrearTicket from './CrearTicket';
 import Escritorio from './Escritorio';
-
-const { Header, Sider, Content } = Layout;
+import { UiContext } from '../context/UiContext'
+const {  Sider, Content } = Layout;
 
 function getItem(label, key, icon, children) {
     return {
@@ -34,12 +31,16 @@ function getItem(label, key, icon, children) {
   ];
 
 export const RouterPage = () => {
+
+    const {ocultarMenu} = useContext(UiContext);
+
     return (
         <>
             <BrowserRouter>
             <Layout style={{height: '100vh'}}>
                 <Sider collapsedWidth="0"
                     breakpoint='md'
+                    hidden={ocultarMenu}
                     >
                     <div className="logo" />
                     <Menu
