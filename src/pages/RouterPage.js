@@ -38,7 +38,9 @@ export const RouterPage = () => {
         <>
             <BrowserRouter>
             <Layout style={{height: '100vh'}}>
-                <Sider>
+                <Sider collapsedWidth="0"
+                    breakpoint='md'
+                    >
                     <div className="logo" />
                     <Menu
                         theme="dark"
