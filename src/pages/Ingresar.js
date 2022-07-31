@@ -1,19 +1,27 @@
 import React from 'react'
-import { Button, Form, Input , InputNumber } from 'antd';
+import { Button, Form, Input , InputNumber , Typography , Divider} from 'antd';
 import { SaveOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 
 const Ingresar = () => {
 
   const onFinish = (values) => {
-    console.log('Success:', values);
+    history('/escritorio');
   };
 
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
 
+  const {Title , Text} = Typography;
+
+  const history = useNavigate ();
+
   return (
     <>
+      <Title level={2}>Ingresar</Title>
+      <Text>Ingrese su nombre y numero de escritorio</Text>
+      <Divider />
       <Form
         name="basic"
         labelCol={{
