@@ -2,6 +2,7 @@ import React, { useContext , useState , useEffect } from 'react'
 import { Col, Row, List ,Typography, Card, Tag , Divider } from 'antd';
 import { useHideMenu } from '../hooks/useHideMenu';
 import { SocketContext } from '../context/SocketContext';
+import { getUltimos } from '../helpers/getUltimos';
 const {Title , Text} = Typography;
 // const data = [
 //   {
@@ -58,6 +59,14 @@ const Cola = () => {
       socket.off('tickets-asignado')
     }
   }, [socket]);
+
+  useEffect(() => {
+    
+    getUltimos().then((data) => {
+      setTickets(data.utlimos);
+    })
+
+  },[]);
   
   return (
     <>
