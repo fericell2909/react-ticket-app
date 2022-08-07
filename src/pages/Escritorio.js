@@ -19,6 +19,7 @@ const Escritorio = () => {
   }
 
   const siguienteTicket = () => {
+    // console.log(usuario);
     socket.emit('siguiente-ticket-trabajar', { usuario }, (ticket) => {
       // console.log(ticket);
       setTicket(ticket);
